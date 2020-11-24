@@ -13,6 +13,8 @@ steps:
   - Dockerfile
   - "-t"
   - eu.gcr.io/otwarte-klatki/$REPO_NAME:$COMMIT_SHA
+  - "-t"
+  - eu.gcr.io/otwarte-klatki/$REPO_NAME:latest
   - "."
 
 # This is the Docker registry push step, it publishes the built image to the Docker registry.
