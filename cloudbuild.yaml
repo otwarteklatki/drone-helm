@@ -1,0 +1,24 @@
+---
+steps:
+
+# This is the Docker build step, it builds the image of the project.
+# If you need custom build procedure, you can pass any option supported by Docker build command.
+# Refer to the documentation here: https://docs.docker.com/engine/reference/commandline/build/
+- name: gcr.io/cloud-builders/docker
+  args:
+  - build
+  - "-f"
+  # This filename may need changing if the project has an unusual Docker setup used.
+  # You should use the file that is supposed to build the project on prod environment.
+  - Dockerfile
+  - "-t"
+  - eu.gcr.io/otwarte-klatki/$REPO_NAME:$COMMIT_SHA
+  - "."
+
+# This is the Docker registry push step, it publishes the built image to the Docker registry.
+# If you need custom push procedure, you can pass any option supported by Docker push command.
+# Refer to the documentation here: https://docs.docker.com/engine/reference/commandline/push/
+- name: gcr.io/cloud-builders/docker
+  args:
+  - push
+  - eu.gcr.io/otwarte-klatki/$REPO_NAME:$COMMIT_SHA
