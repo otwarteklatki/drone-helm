@@ -25,7 +25,7 @@ COPY --from=builder /go/src/github.com/ipedrazas/drone-helm/drone-helm /bin/
 
 # Helm version: can be passed at build time
 ARG VERSION
-ENV VERSION ${VERSION:-v2.17.0}
+ENV VERSION ${VERSION:-v2.16.2}
 ENV FILENAME helm-${VERSION}-linux-amd64.tar.gz
 
 ARG KUBECTL
